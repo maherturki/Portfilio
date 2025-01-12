@@ -26,6 +26,15 @@ import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 
+
+
+import linkedin from "./linkedin.png";
+import ml from "./ml.png";
+import ml2 from "./ml2.png";
+import ml3 from "./ml3.png";
+import cloud from "./cloud.png";
+import oracle from "./oracle.png";
+
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
@@ -57,6 +66,12 @@ export {
   starbucks,
   tesla,
   carrent,
+  linkedin,
+  ml,
+  ml2,
+  ml3,
+  cloud,
+  oracle,
   jobit,
   tripguide,
 };
