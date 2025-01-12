@@ -5,27 +5,24 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Adjust HMR settings
     hmr: {
-      overlay: true, // Displays error overlay in browser on build errors
+      overlay: true,
     },
     watch: {
-      // Ignore node_modules and other unnecessary directories
       ignored: ['**/node_modules/**', '**/.git/**'],
     },
-    port: 3000, // You can change the development server port here
+    port: 3000,
   },
   build: {
-    // Improve build performance
-    sourcemap: true, // Enable source maps for easier debugging
-    outDir: 'dist', // Specify output directory
+    sourcemap: true,
+    outDir: 'dist',
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor code into its own chunk
           vendor: ['react', 'react-dom'],
         },
       },
     },
   },
+  assetsInclude: ['**/*.png', '**/*.PNG', '**/*.jpg', '**/*.jpeg', '**/*.gif'], // Add this line to handle PNG files correctly
 });
