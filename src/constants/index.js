@@ -22,8 +22,8 @@ import {
   carrent,
   linkedin,
   ml,
-  ml2,
-  ml3,
+  mlk,
+  mlm,
   cloud,
   oracle,
   jobit,
@@ -227,7 +227,7 @@ const certifications = [
         color: "pink-text-gradient",
       },
     ],
-    image: ml3,
+    image: mlm,
     certificate_link: "https://www.coursera.org/account/accomplishments/specialization/6DD60XH14WOT", // Replace with actual certificate link
   },
   {
@@ -319,7 +319,7 @@ const certifications = [
         color: "pink-text-gradient",
       },
     ],
-    image: ml2, // Replace with actual image path
+    image: mlk, // Replace with actual image path
     certificate_link: "https://www.credly.com/badges/9244edd5-15d5-4fb9-b8db-305ff4ed6381/linked_in_profile", // Replace with actual certificate link
   },
   {

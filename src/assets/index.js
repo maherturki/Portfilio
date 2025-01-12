@@ -30,8 +30,8 @@ import tesla from "./company/tesla.png";
 
 import linkedin from "./linkedin.png";
 import ml from "./ml.png";
-import ml2 from "./ml2.png";
-import ml3 from "./ml3.png";
+import mlk from "./mlk.png";
+import mlm from "./mlm.png";
 import cloud from "./cloud.png";
 import oracle from "./oracle.png";
 
@@ -68,8 +68,8 @@ export {
   carrent,
   linkedin,
   ml,
-  ml2,
-  ml3,
+  mlk,
+  mlm,
   cloud,
   oracle,
   jobit,
