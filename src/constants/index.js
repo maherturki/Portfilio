@@ -24,7 +24,7 @@ import {
   ml,
   mlk,
   mlm,
-  cloud,
+  certifcloud,
   oracle,
   jobit,
   tripguide,
@@ -341,7 +341,7 @@ const certifications = [
         color: "pink-text-gradient",
       },
     ],
-    image: cloud, // Replace with actual image path
+    image: certifcloud, // Replace with actual image path
     certificate_link: "https://www.credly.com/badges/a2c22954-bcc6-488a-9945-10d0feffae81/linked_in_profile", // Replace with actual certificate link
   },
 ];

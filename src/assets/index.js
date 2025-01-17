@@ -32,7 +32,7 @@ import linkedin from "./linkedin.png";
 import ml from "./ml.png";
 import mlk from "./mlk.png";
 import mlm from "./mlm.png";
-import cloud from "./cloud.png";
+import certifcloud from "./certifcloud.png";
 import oracle from "./oracle.png";
 
 import carrent from "./carrent.png";
@@ -70,7 +70,7 @@ export {
   ml,
   mlk,
   mlm,
-  cloud,
+  certifcloud,
   oracle,
   jobit,
   tripguide,
