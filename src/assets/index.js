@@ -34,7 +34,7 @@ import ml from "./ml.png";
 import mlk from "./mlk.png";
 import mlm from "./mlm.png";
 import certifcloud from "./certifcloud.png";
-import oracle from "./oracle.png";
+import oracle from "./oraclee.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
