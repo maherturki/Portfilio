@@ -56,7 +56,7 @@ const services = [
     icon: web,
   },
   {
-    title: "Machine Learning Engineer",
+    title: "ML Engineer",
     icon: mobile,
   },
   {
@@ -126,6 +126,20 @@ const technologies = [
 
 const experiences = [
   {
+    title: "MLOps Engineer Intern",
+    company_name: "AI Code Search Engine",
+    icon: meta,
+    iconBg: "#4CAF50",
+    date: "February  2025 – July 2025",
+    points: [
+      "Developed and optimized an AI-powered code search engine using Azure AI services, Docker, .NET, and Python.",
+      "Built a multi-agent system for method search, usage detection, and file path generation.",
+      "Integrated an LLM-powered chatbot and Visual Studio plugin for real-time code search and generation.",
+      "Applied MLOps best practices for model deployment, monitoring, and performance optimization.",
+      "Collaborated with cross-functional teams to ensure seamless integration of AI-driven components."
+    ],
+  },
+  {
     title: "AI Developer Intern",
     company_name: "OwlCom",
     icon: starbucks,
@@ -156,7 +170,7 @@ const experiences = [
     company_name: "BIS",
     icon: shopify,
     iconBg: "#383E56",
-    date: "February 2021 - June 2021",
+    date: "February 2022 - June 2022",
     points: [
       "Developed an end-to-end system for real-time animal health monitoring using Python and Django.",
       "Integrated React front-end and Dockerized back-end services for robust performance.",
@@ -169,7 +183,7 @@ const experiences = [
     company_name: "Owlcom",
     icon: starbucks,
     iconBg: "#E6DEDD",
-    date: "June 2020 - August 2020",
+    date: "June 2021 - August 2021",
     points: [
       "Developed an e-commerce website using Django, HTML5, CSS3, and JavaScript.",
       "Implemented a user-friendly interface with a focus on accessibility and responsiveness.",
