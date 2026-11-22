@@ -44,7 +44,7 @@ export const skillGroups = [
       "LangGraph",
       "Embeddings",
       "Semantic Search",
-      "GPT-4",
+      "GPT",
       "Mistral",
     ],
   },
