@@ -1,81 +1,73 @@
 import { motion } from "framer-motion";
 
-import { styles } from "../styles";
 import { socialLinks } from "../constants";
-import { ComputersCanvas } from "./canvas";
+import HeroVisual from "./HeroVisual";
 
-const Hero = () => {
-  return (
-    <section id='home' className={`relative w-full h-screen min-h-[720px] mx-auto`}>
-      <div
-        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+const Hero = () => (
+  <section id='home' className='hero-section'>
+    <div className='page-container hero-grid'>
+      <motion.div
+        className='hero-copy'
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className='flex flex-col justify-center items-center mt-5'>
-          <div className='w-5 h-5 rounded-full bg-[#915EFF]' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
+        <p className='hero-kicker'>AI Engineer · Generative AI · Agentic Systems</p>
+        <h1 className='hero-title'>
+          Building intelligent systems that solve{" "}
+          <span className='hero-title-accent'>real-world problems.</span>
+        </h1>
+        <p className='hero-name'>Maher Turki</p>
+        <p className='hero-description'>
+          I build LLM-powered applications, agentic workflows, and practical
+          enterprise AI solutions with Python and cloud infrastructure.
+        </p>
+
+        <div className='hero-actions'>
+          <a className='button-primary' href='#projects'>
+            Explore my work <span aria-hidden='true'>↗</span>
+          </a>
+          <a className='button-secondary' href='#contact'>
+            Get in touch
+          </a>
+          <a
+            className='button-secondary'
+            href='/resume.pdf'
+            download='Maher_Turki_AI_Engineer_CV.pdf'
+          >
+            Download CV
+          </a>
         </div>
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I&apos;m <span className='text-[#915EFF]'>Maher Turki</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            AI Engineer building enterprise AI applications, agentic workflows,
-            <br className='sm:block hidden' /> and intelligent automation.
-          </p>
-          <div className='mt-7 flex flex-wrap items-center gap-4'>
+        <div className='hero-socials' aria-label='Social profiles'>
+          {socialLinks.map((link) => (
             <a
-              href='#projects'
-              className='rounded-xl bg-[#915EFF] px-5 py-3 font-semibold text-white hover:bg-[#7c4fe0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white'
+              key={link.name}
+              className='social-link'
+              href={link.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={`${link.name} profile (opens in a new tab)`}
             >
-              View projects
+              <img src={link.icon} alt='' />
+              <span>{link.name}</span>
             </a>
-            <a
-              href='/resume.pdf'
-              download='Maher_Turki_AI_Engineer_CV.pdf'
-              className='rounded-xl border border-secondary px-5 py-3 font-semibold text-white hover:border-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]'
-            >
-              Download CV
-            </a>
-            <div className='flex items-center gap-4' aria-label='Social profiles'>
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label={`Maher Turki on ${link.name} (opens in a new tab)`}
-                  className='rounded-full p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]'
-                >
-                  <img src={link.icon} alt='' className='h-7 w-7 object-contain' />
-                </a>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </div>
+      </motion.div>
 
-      <ComputersCanvas />
-
-      <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-              }}
-              className='w-3 h-3 rounded-full bg-secondary mb-1'
-            />
-          </div>
-        </a>
-      </div>
-    </section>
-  );
-};
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.72, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <HeroVisual />
+      </motion.div>
+    </div>
+    <a className='hero-scroll' href='#about'>
+      Discover the work
+    </a>
+  </section>
+);
 
 export default Hero;

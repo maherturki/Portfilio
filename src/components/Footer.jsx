@@ -1,23 +1,43 @@
 import { socialLinks } from "../constants";
 
 const Footer = () => (
-  <footer className='mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 border-t border-secondary/20 px-6 py-8 sm:flex-row sm:px-16'>
-    <p className='text-center text-[14px] text-secondary'>
-      © {new Date().getFullYear()} Maher Turki
-    </p>
-    <nav aria-label='Social profiles' className='flex items-center gap-5'>
-      {socialLinks.map((link) => (
-        <a
-          key={link.name}
-          href={link.url}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-[14px] text-secondary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]'
-        >
-          {link.name}
+  <footer className='site-footer'>
+    <div className='page-container footer-inner'>
+      <div>
+        <a className='brand-lockup' href='#home' aria-label='Back to top'>
+          <span className='brand-mark' aria-hidden='true'>
+            MT
+          </span>
+          <span>
+            <span className='brand-name'>Maher Turki</span>
+            <span className='brand-role'>AI Engineer</span>
+          </span>
         </a>
-      ))}
-    </nav>
+        <p className='footer-copy'>
+          © {new Date().getFullYear()} Maher Turki
+        </p>
+      </div>
+
+      <nav className='footer-links' aria-label='Footer links'>
+        <a className='footer-link' href='mailto:maherturki25@gmail.com'>
+          Email
+        </a>
+        {socialLinks.map((link) => (
+          <a
+            className='footer-link'
+            href={link.url}
+            key={link.name}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {link.name}
+          </a>
+        ))}
+        <a className='footer-link' href='/resume.pdf' download>
+          CV
+        </a>
+      </nav>
+    </div>
   </footer>
 );
 

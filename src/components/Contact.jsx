@@ -1,22 +1,15 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
+import { socialLinks } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion";
 
-const initialForm = {
-  name: "",
-  email: "",
-  subject: "",
-  message: "",
-};
+const EMAIL_ADDRESS = "maherturki25@gmail.com";
+const initialForm = { name: "", email: "", subject: "", message: "" };
 
-const Contact = () => {
+const Contact = ({ sectionId }) => {
   const [form, setForm] = useState(initialForm);
-  const [loading, setLoading] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState("");
 
   const handleChange = (event) => {
@@ -27,7 +20,7 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (loading) return;
+    if (isSending) return;
 
     const serviceId = import.meta.env.VITE_APP_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID;
@@ -35,12 +28,12 @@ const Contact = () => {
 
     if (!serviceId || !templateId || !publicKey) {
       setStatus(
-        "The contact form is not configured yet. Please contact me through LinkedIn."
+        "The message form is not configured yet. You can email me directly using the address on this page."
       );
       return;
     }
 
-    setLoading(true);
+    setIsSending(true);
     setStatus("");
 
     try {
@@ -48,107 +41,127 @@ const Contact = () => {
         serviceId,
         templateId,
         {
-          from_name: form.name,
-          from_email: form.email,
+          name: form.name,
+          email: form.email,
           subject: form.subject,
           message: form.message,
         },
         publicKey
       );
       setForm(initialForm);
-      setStatus("Thank you. Your message has been sent.");
+      setStatus("Thanks — your message has been sent.");
     } catch (error) {
       console.error("EmailJS message could not be sent:", error);
       setStatus("Your message could not be sent. Please try again later.");
     } finally {
-      setLoading(false);
+      setIsSending(false);
     }
   };
 
   return (
-    <div className='xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden'>
-      <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className='flex-[0.75] rounded-2xl bg-black-100 p-8'
-      >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+    <div className='contact-panel'>
+      <div className='contact-intro'>
+        <p className='section-kicker'>Contact</p>
+        <h2 className='contact-title' id={`${sectionId}-heading`}>
+          Let&apos;s build something intelligent.
+        </h2>
+        <p className='contact-copy'>
+          I&apos;m interested in discussing AI engineering opportunities,
+          innovative products, and challenging software projects.
+        </p>
 
-        <form onSubmit={handleSubmit} className='mt-12 flex flex-col gap-8'>
-          <label className='flex flex-col'>
-            <span className='mb-4 font-medium text-white'>Your name</span>
-            <input
-              type='text'
-              name='name'
-              autoComplete='name'
-              value={form.name}
-              onChange={handleChange}
-              required
-              maxLength={120}
-              placeholder='Your name'
-              className='rounded-lg bg-tertiary px-6 py-4 font-medium text-white outline-none placeholder:text-secondary focus-visible:ring-2 focus-visible:ring-[#915EFF]'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='mb-4 font-medium text-white'>Your email</span>
-            <input
-              type='email'
-              name='email'
-              autoComplete='email'
-              value={form.email}
-              onChange={handleChange}
-              required
-              maxLength={254}
-              placeholder='you@example.com'
-              className='rounded-lg bg-tertiary px-6 py-4 font-medium text-white outline-none placeholder:text-secondary focus-visible:ring-2 focus-visible:ring-[#915EFF]'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='mb-4 font-medium text-white'>Subject</span>
-            <input
-              type='text'
-              name='subject'
-              value={form.subject}
-              onChange={handleChange}
-              required
-              maxLength={160}
-              placeholder='What is this about?'
-              className='rounded-lg bg-tertiary px-6 py-4 font-medium text-white outline-none placeholder:text-secondary focus-visible:ring-2 focus-visible:ring-[#915EFF]'
-            />
-          </label>
-          <label className='flex flex-col'>
-            <span className='mb-4 font-medium text-white'>Your message</span>
-            <textarea
-              rows={7}
-              name='message'
-              value={form.message}
-              onChange={handleChange}
-              required
-              maxLength={5000}
-              placeholder='Write your message'
-              className='rounded-lg bg-tertiary px-6 py-4 font-medium text-white outline-none placeholder:text-secondary focus-visible:ring-2 focus-visible:ring-[#915EFF]'
-            />
-          </label>
+        <div className='contact-methods'>
+          <a className='contact-method' href={`mailto:${EMAIL_ADDRESS}`}>
+            <span className='contact-method-icon' aria-hidden='true'>
+              @
+            </span>
+            <span>{EMAIL_ADDRESS}</span>
+          </a>
+          {socialLinks.map((link) => (
+            <a
+              className='contact-method'
+              href={link.url}
+              key={link.name}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <span className='contact-method-icon' aria-hidden='true'>
+                in
+              </span>
+              <span>{link.name}</span>
+              <span aria-hidden='true'>↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
 
-          <p role='status' aria-live='polite' className='text-secondary'>
-            {status}
-          </p>
-          <button
-            type='submit'
-            disabled={loading}
-            className='w-fit rounded-xl bg-tertiary px-8 py-3 font-bold text-white shadow-md shadow-primary outline-none disabled:cursor-not-allowed disabled:opacity-60 focus-visible:ring-2 focus-visible:ring-[#915EFF]'
-          >
-            {loading ? "Sending..." : "Send message"}
-          </button>
-        </form>
-      </motion.div>
-
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-      >
-        <EarthCanvas />
-      </motion.div>
+      <form className='contact-form' onSubmit={handleSubmit}>
+        <div className='form-field'>
+          <label htmlFor='contact-name'>Name</label>
+          <input
+            id='contact-name'
+            name='name'
+            type='text'
+            autoComplete='name'
+            value={form.name}
+            onChange={handleChange}
+            placeholder='Your name'
+            maxLength={120}
+            required
+          />
+        </div>
+        <div className='form-field'>
+          <label htmlFor='contact-email'>Email</label>
+          <input
+            id='contact-email'
+            name='email'
+            type='email'
+            autoComplete='email'
+            value={form.email}
+            onChange={handleChange}
+            placeholder='you@example.com'
+            maxLength={254}
+            required
+          />
+        </div>
+        <div className='form-field form-field--full'>
+          <label htmlFor='contact-subject'>Subject</label>
+          <input
+            id='contact-subject'
+            name='subject'
+            type='text'
+            value={form.subject}
+            onChange={handleChange}
+            placeholder='What would you like to discuss?'
+            maxLength={160}
+            required
+          />
+        </div>
+        <div className='form-field form-field--full'>
+          <label htmlFor='contact-message'>Message</label>
+          <textarea
+            id='contact-message'
+            name='message'
+            value={form.message}
+            onChange={handleChange}
+            placeholder='Tell me a little about it...'
+            rows={5}
+            maxLength={5000}
+            required
+          />
+        </div>
+        <button
+          className='button-primary contact-submit'
+          type='submit'
+          disabled={isSending}
+        >
+          {isSending ? "Sending..." : "Send message"}
+          <span aria-hidden='true'>↗</span>
+        </button>
+        <p className='contact-status' role='status' aria-live='polite'>
+          {status}
+        </p>
+      </form>
     </div>
   );
 };

@@ -1,77 +1,59 @@
-import React from "react";
-import { motion } from "framer-motion";
-
-import { styles } from "../styles";
 import { certifications } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import SectionHeading from "./SectionHeading";
 
-const CertificationCard = ({ certification, index }) => {
-  return (
-    <motion.div
-      variants={fadeIn("up", "spring", index * 0.3, 0.75)}
-      className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
-    >
-      {certification.image && (
-        <div className="relative w-full h-[230px]">
-          <img
-            src={certification.image}
-            alt={`${certification.name} credential`}
-            className="w-full h-full object-cover rounded-2xl"
-          />
-        </div>
+const CertificationCard = ({ certification }) => (
+  <article className='certification-card'>
+    <span className='certification-mark' aria-hidden='true'>
+      {certification.image ? (
+        <img
+          src={certification.image}
+          alt=''
+          loading='lazy'
+          decoding='async'
+        />
+      ) : (
+        certification.organization.slice(0, 2).toUpperCase()
       )}
-      <div className="mt-5">
-        <h3 className="text-white font-bold text-[24px]">
-          {certification.name}
-        </h3>
-        <p className="mt-2 text-secondary text-[16px]">
-          {certification.organization}
-        </p>
-        {certification.date && (
-          <p className="mt-2 text-secondary text-[14px]">
-            {certification.date}
-          </p>
-        )}
-        {certification.note && (
-          <p className="mt-3 text-secondary text-[13px] leading-5">
-            {certification.note}
-          </p>
-        )}
-      </div>
+    </span>
+    <div className='certification-content'>
+      <h3>{certification.name}</h3>
+      <p>
+        {certification.organization}
+        {certification.date ? ` · ${certification.date}` : ""}
+      </p>
       {certification.certificate_link && (
         <a
           href={certification.certificate_link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block text-blue-400 text-[14px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]"
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label={`Verify ${certification.name} (opens in a new tab)`}
         >
-          View credential
+          View credential <span aria-hidden='true'>↗</span>
         </a>
       )}
-    </motion.div>
-  );
-};
+      {certification.note && (
+        <p className='certification-note'>{certification.note}</p>
+      )}
+    </div>
+  </article>
+);
 
-const Certifications = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Recognitions and Achievements</p>
-        <h2 className={`${styles.sectionHeadText}`}>Certifications.</h2>
-      </motion.div>
+const Certifications = ({ sectionId }) => (
+  <>
+    <SectionHeading
+      eyebrow='Certifications'
+      title='Continued learning.'
+      description='Selected credentials in artificial intelligence, cloud computing, and machine learning.'
+      id={`${sectionId}-heading`}
+    />
 
-      <div className="mt-20 flex flex-wrap justify-center gap-7">
-        {certifications.map((certification, index) => (
-          <CertificationCard
-            key={`certification-${index}`}
-            certification={certification}
-            index={index}
-          />
-        ))}
-      </div>
-    </>
-  );
-};
+    <div className='certification-grid'>
+      {certifications.map((certification) => (
+        <CertificationCard key={certification.name} certification={certification} />
+      ))}
+    </div>
+  </>
+);
 
-export default SectionWrapper(Certifications, "certifications");
+export default SectionWrapper(Certifications, "certifications", true);

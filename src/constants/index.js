@@ -1,21 +1,16 @@
 import {
-  backend,
   certArtificialIntelligence,
   certCloudComputing,
   certMachineLearningAssociate,
   certMachineLearningSpecialization,
   certOracleAiFoundations,
-  creator,
-  github,
   linkedin,
-  mobile,
-  web,
 } from "../assets";
 
 export const navLinks = [
   { id: "about", title: "About" },
+  { id: "expertise", title: "Expertise" },
   { id: "experience", title: "Experience" },
-  { id: "skills", title: "Skills" },
   { id: "projects", title: "Projects" },
   { id: "education", title: "Education" },
   { id: "certifications", title: "Certifications" },
@@ -24,22 +19,10 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    name: "GitHub",
-    url: "https://github.com/maherturki",
-    icon: github,
-  },
-  {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/maher-turki/",
     icon: linkedin,
   },
-];
-
-export const services = [
-  { title: "Enterprise AI Applications", icon: web },
-  { title: "Agentic Workflows", icon: creator },
-  { title: "Python Backends & APIs", icon: backend },
-  { title: "Azure AI Solutions", icon: mobile },
 ];
 
 export const languages = [
@@ -50,11 +33,7 @@ export const languages = [
 
 export const skillGroups = [
   {
-    name: "Programming",
-    skills: ["Python", "C#", "JavaScript", "TypeScript", "SQL"],
-  },
-  {
-    name: "AI & Generative AI",
+    name: "AI & LLM Engineering",
     skills: [
       "LLM Applications",
       "Generative AI",
@@ -70,8 +49,12 @@ export const skillGroups = [
     ],
   },
   {
-    name: "Backend & Frontend",
-    skills: ["FastAPI", "REST APIs", "React.js", "Next.js", "Node.js"],
+    name: "Backend Engineering",
+    skills: ["Python", "FastAPI", "REST APIs", "C#", "SQL"],
+  },
+  {
+    name: "Frontend Development",
+    skills: ["React.js", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS"],
   },
   {
     name: "Cloud & Infrastructure",
@@ -88,7 +71,7 @@ export const skillGroups = [
     ],
   },
   {
-    name: "Databases & Tools",
+    name: "Databases & Engineering Tools",
     skills: ["PostgreSQL", "SQL Server", "Git", "GitHub", "GitHub Actions"],
   },
 ];
@@ -96,7 +79,8 @@ export const skillGroups = [
 export const experiences = [
   {
     title: "AI Engineer",
-    company_name: "MoonSide Consulting & Services",
+    company_name: "Moonside Consulting & Services",
+    company_url: "https://www.moonside-cs.com/",
     company_initials: "MS",
     iconBg: "#915EFF",
     date: "July 2025 – Present",
@@ -113,7 +97,8 @@ export const experiences = [
   },
   {
     title: "AI Engineer Intern",
-    company_name: "MoonSide Consulting & Services",
+    company_name: "Moonside Consulting & Services",
+    company_url: "https://www.moonside-cs.com/",
     company_initials: "MS",
     iconBg: "#915EFF",
     date: "February 2025 – June 2025",
@@ -142,6 +127,24 @@ export const education = [
 
 export const certifications = [
   {
+    name: "Machine Learning Specialization",
+    organization: "DeepLearning.AI",
+    date: "Aug 2024",
+    image: certMachineLearningSpecialization,
+    certificate_link:
+      "https://www.coursera.org/account/accomplishments/specialization/6DD60XH14WOT",
+  },
+  {
+    name: "Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate",
+    organization: "Oracle",
+    date: "Jul 2024",
+    image: certOracleAiFoundations,
+    note:
+      "The certificate image lists validity through 24 August 2026; please confirm its current status.",
+    certificate_link:
+      "https://brm-certview.oracle.com/ords/certview/ecertificate?ssn=OC5207776&trackId=OCI24AICFA&key=dc50458db50d7f493a5ab401729463c1bb2bee14",
+  },
+  {
     name: "IBM Artificial Intelligence Fundamentals",
     organization: "IBM",
     date: "Sep 2024",
@@ -166,40 +169,35 @@ export const certifications = [
       "https://www.credly.com/badges/9244edd5-15d5-4fb9-b8db-305ff4ed6381/linked_in_profile",
   },
   {
-    name: "Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate",
-    organization: "Oracle",
-    date: "Jul 2024",
-    image: certOracleAiFoundations,
-    note:
-      "The certificate image lists validity through 24 August 2026; please confirm its current status.",
-    certificate_link:
-      "https://brm-certview.oracle.com/ords/certview/ecertificate?ssn=OC5207776&trackId=OCI24AICFA&key=dc50458db50d7f493a5ab401729463c1bb2bee14",
-  },
-  {
-    name: "Machine Learning Specialization",
-    organization: "DeepLearning.AI",
-    date: "Aug 2024",
-    image: certMachineLearningSpecialization,
-    certificate_link:
-      "https://www.coursera.org/account/accomplishments/specialization/6DD60XH14WOT",
-  },
-  {
     name: "Advanced Learning Algorithms",
     organization: "DeepLearning.AI",
+    certificate_link:
+      "https://www.coursera.org/account/accomplishments/verify/K5KHOP11YG44",
+  },
+  {
+    name: "Unsupervised Learning, Recommenders, Reinforcement Learning",
+    organization: "DeepLearning.AI",
+    certificate_link:
+      "https://www.coursera.org/account/accomplishments/records/PFIMERQA16YD",
   },
   {
     name: "Supervised Machine Learning: Regression and Classification",
     organization: "DeepLearning.AI",
+    certificate_link:
+      "https://www.coursera.org/account/accomplishments/records/130A7U0M4V7R",
   },
   {
     name: "Introduction to Python",
     organization: "DataCamp",
+    certificate_link:
+      "https://www.datacamp.com/statement-of-accomplishment/course/17460449dd8358e468e14ebf3bd77a8f253ce1cb?raw=1",
   },
 ];
 
 export const projects = [
   {
     name: "Intelligent Invoice Automation",
+    visual: "invoice",
     category: "Document Automation",
     status: "In development",
     description:
@@ -222,10 +220,11 @@ export const projects = [
       {
         heading: "Architecture",
         items: [
+          "Azure Logic Apps ingests invoice emails.",
+          "Azure Blob Storage stores invoice documents; Event Grid and Storage Queues coordinate asynchronous processing.",
+          "A separate FastAPI background worker processes invoices while the API serves the application.",
           "Processes PDF and XML invoices; XML documents are parsed directly and PDF content extraction is handled by the backend.",
           "Mistral AI extraction is optional.",
-          "Background processing is separated from the main API.",
-          "Azure Blob Storage stores invoice documents; Azure Event Grid and Storage Queues support asynchronous processing.",
           "PostgreSQL stores structured invoice information.",
         ],
       },
@@ -243,6 +242,7 @@ export const projects = [
   },
   {
     name: "MorgenFund: Enterprise AI Assistants",
+    visual: "retrieval",
     category: "Enterprise AI Assistants",
     description:
       "An enterprise AI assistant solution enabling natural-language interaction with confidential source code and technical documentation.",
@@ -267,6 +267,7 @@ export const projects = [
   },
   {
     name: "E-Fax Automation",
+    visual: "fax",
     category: "Enterprise Automation",
     status: "Delivered to production",
     description:
@@ -294,6 +295,7 @@ export const projects = [
   },
   {
     name: "Intelligent Contract Analysis Assistant",
+    visual: "contract",
     category: "AI & Document Analysis",
     description:
       "An AI-powered contract analysis assistant developed during my internship to extract relevant contract information, analyze documents, and generate structured summaries.",

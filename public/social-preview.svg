@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="background" x1="86" y1="34" x2="1093" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11141D"/>
+      <stop offset="1" stop-color="#08090D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(404 250 -216 349 1031 103)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A68AFF" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#A68AFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#background)" d="M0 0h1200v630H0z"/>
+  <path fill="url(#glow)" d="M0 0h1200v630H0z"/>
+  <path stroke="#fff" stroke-opacity=".08" d="M0 1h1200M0 629h1200"/>
+  <circle cx="1051" cy="122" r="197" stroke="#A68AFF" stroke-opacity=".15"/>
+  <circle cx="1051" cy="122" r="252" stroke="#829BFF" stroke-opacity=".08"/>
+  <rect x="87" y="95" width="51" height="51" rx="14" fill="#A68AFF" fill-opacity=".12" stroke="#A68AFF" stroke-opacity=".5"/>
+  <text x="112.5" y="128" fill="#F4F3F8" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="-1" text-anchor="middle">MT</text>
+  <text x="159" y="127" fill="#F4F3F8" font-family="Arial,sans-serif" font-size="20" font-weight="700">Maher Turki</text>
+  <text x="88" y="229" fill="#C4B8FF" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="3">AI ENGINEER  ·  GENERATIVE AI  ·  AGENTIC SYSTEMS</text>
+  <text x="84" y="339" fill="#F4F3F8" font-family="Arial,sans-serif" font-size="63" font-weight="700" letter-spacing="-3">Building intelligent systems</text>
+  <text x="84" y="420" fill="#B7A2FF" font-family="Arial,sans-serif" font-size="63" font-weight="700" letter-spacing="-3">that solve real-world problems.</text>
+  <text x="88" y="511" fill="#A1A6B3" font-family="Arial,sans-serif" font-size="22">LLM applications · Python backends · Azure cloud</text>
+</svg>

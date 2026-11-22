@@ -1,88 +1,53 @@
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
-
-import "react-vertical-timeline-component/style.min.css";
-
-import { styles } from "../styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { textVariant } from "../utils/motion";
+import SectionHeading from "./SectionHeading";
 
-const ExperienceCard = ({ experience }) => {
-  return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
-      }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
-      icon={
-        <div
-          aria-hidden='true'
-          className='flex justify-center items-center w-full h-full text-white font-bold'
-        >
-          {experience.company_initials}
-        </div>
-      }
-    >
-      <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
-        <p
-          className='text-secondary text-[16px] font-semibold'
-          style={{ margin: 0 }}
-        >
-          {experience.company_name}
-        </p>
-      </div>
+const Experience = ({ sectionId }) => (
+  <>
+    <SectionHeading
+      eyebrow='Professional experience'
+      title='Building systems in real workflows.'
+      id={`${sectionId}-heading`}
+    />
 
-      <p className='mt-4 text-white-100 text-[14px] leading-6'>
-        {experience.summary}
-      </p>
+    <div className='experience-list'>
+      {experiences.map((experience) => {
+        const isCurrent = experience.date.endsWith("Present");
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+        return (
+          <article
+            className={`experience-card${isCurrent ? " experience-card--current" : ""}`}
+            key={`${experience.title}-${experience.date}`}
           >
-            {point}
-          </li>
-        ))}
-      </ul>
-    </VerticalTimelineElement>
-  );
-};
-
-const Experience = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-        Professional background
-        </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-        Experience.
-        </h2>
-      </motion.div>
-
-      <div className='mt-20 flex flex-col'>
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
-    </>
-  );
-};
+            <div className='experience-meta'>
+              {isCurrent && <span className='experience-current'>Current role</span>}
+              <span>{experience.date}</span>
+            </div>
+            <div>
+              <h3 className='experience-role'>{experience.title}</h3>
+              <p className='experience-company'>
+                <a
+                  className='experience-company-link'
+                  href={experience.company_url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  {experience.company_name}
+                  <span aria-hidden='true'> ↗</span>
+                </a>
+              </p>
+              <p className='experience-summary'>{experience.summary}</p>
+              <ul className='experience-points'>
+                {experience.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </>
+);
 
 export default SectionWrapper(Experience, "experience");

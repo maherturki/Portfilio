@@ -1,121 +1,207 @@
-import React, { useEffect, useRef, useState } from "react";
-import { styles } from "../styles";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const menuRef = useRef(null);
+  const [activeSection, setActiveSection] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const menuButtonRef = useRef(null);
+  const mobileNavRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (!toggle) return undefined;
+    const sections = navLinks
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
 
-    const handlePointerDown = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setToggle(false);
+    if (!("IntersectionObserver" in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const current = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (current) setActiveSection(current.target.id);
+      },
+      { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.1, 0.3, 0.6] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    mobileNavRef.current?.querySelector("a")?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab" || !mobileNavRef.current) return;
+      const focusable = mobileNavRef.current.querySelectorAll("a[href], button");
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
       }
     };
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") setToggle(false);
-    };
 
-    document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [toggle]);
+  }, [isMenuOpen]);
 
-  const handleNavClick = (title) => {
-    setActive(title);
-    setToggle(false);
+  const closeMenu = () => setIsMenuOpen(false);
+  const handleMobileNavClick = (event) => {
+    const sectionId = event.currentTarget.hash.slice(1);
+    closeMenu();
+    window.requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.focus({ preventScroll: true });
+    });
   };
 
   return (
-    <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${scrolled ? "bg-primary" : "bg-transparent"}`}
+    <header
+      className={`site-header${isScrolled ? " site-header--scrolled" : ""}`}
     >
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
+      <div className='nav-shell'>
         <a
+          className='brand-lockup'
           href='#home'
-          className='flex items-center gap-2'
           onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
+            setActiveSection("");
+            closeMenu();
           }}
+          aria-label='Maher Turki, home'
         >
-          <img src={logo} alt='' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex'>
-            Maher Turki
-          </p>
+          <span className='brand-mark' aria-hidden='true'>
+            MT
+          </span>
+          <span>
+            <span className='brand-name'>Maher Turki</span>
+            <span className='brand-role'>AI Engineer</span>
+          </span>
         </a>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-secondary"} hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => handleNavClick(nav.title)}
+        <nav className='desktop-nav' aria-label='Main navigation'>
+          {navLinks.map(({ id, title }) => (
+            <a
+              key={id}
+              className={`nav-link${activeSection === id ? " nav-link--active" : ""}`}
+              href={`#${id}`}
+              aria-current={activeSection === id ? "location" : undefined}
             >
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
+              {title}
+            </a>
           ))}
-        </ul>
+        </nav>
 
-        <div ref={menuRef} className='sm:hidden flex flex-1 justify-end items-center'>
-          <button
-            type='button'
-            aria-label={toggle ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={toggle}
-            aria-controls='mobile-navigation'
-            className='rounded p-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]'
-            onClick={() => setToggle((current) => !current)}
-          >
-            <img
-              src={toggle ? close : menu}
-              alt=''
-              className='w-[28px] h-[28px] object-contain'
-            />
-          </button>
+        <a
+          className='nav-cv'
+          href='/resume.pdf'
+          download='Maher_Turki_AI_Engineer_CV.pdf'
+        >
+          Download CV
+        </a>
 
-          <div
-            id='mobile-navigation'
-            hidden={!toggle}
-            className='p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[180px] z-10 rounded-xl'
-          >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"}`}
-                  onClick={() => handleNavClick(nav.title)}
-                >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <button
+          ref={menuButtonRef}
+          className='menu-toggle'
+          type='button'
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls='mobile-navigation'
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span className='menu-glyph' aria-hidden='true' />
+        </button>
       </div>
-    </nav>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            <motion.button
+              type='button'
+              className='mobile-nav-backdrop'
+              aria-label='Close navigation menu'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.16 }}
+              onClick={() => {
+                closeMenu();
+                menuButtonRef.current?.focus();
+              }}
+            />
+            <motion.div
+              ref={mobileNavRef}
+              id='mobile-navigation'
+              className='mobile-nav-panel'
+              role='dialog'
+              aria-modal='true'
+              aria-label='Mobile navigation'
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+            >
+              <nav aria-label='Mobile navigation links'>
+                <ul className='mobile-nav-list'>
+                  {navLinks.map(({ id, title }) => (
+                    <li key={id}>
+                      <a
+                        className={`mobile-nav-link${activeSection === id ? " mobile-nav-link--active" : ""}`}
+                        href={`#${id}`}
+                        aria-current={
+                          activeSection === id ? "location" : undefined
+                        }
+                        onClick={handleMobileNavClick}
+                      >
+                        {title}
+                      </a>
+                    </li>
+                  ))}
+                  <li>
+                    <a
+                      className='mobile-nav-link'
+                      href='/resume.pdf'
+                      download='Maher_Turki_AI_Engineer_CV.pdf'
+                      onClick={closeMenu}
+                    >
+                      Download CV
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

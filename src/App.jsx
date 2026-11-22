@@ -1,36 +1,41 @@
+import { MotionConfig } from "framer-motion";
+
 import {
   About,
   Contact,
   Education,
   Experience,
+  EngineeringApproach,
   Hero,
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
   Certifications,
   Footer,
 } from "./components";
 
 const App = () => {
   return (
-    <div className='relative z-0 bg-primary'>
-      <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
+    <MotionConfig reducedMotion='user'>
+      <div className='site-shell'>
+        <a className='skip-link' href='#main-content'>
+          Skip to content
+        </a>
         <Navbar />
-        <Hero />
+        <main id='main-content'>
+          <Hero />
+          <About />
+          <Tech />
+          <Experience />
+          <Works />
+          <EngineeringApproach />
+          <Education />
+          <Certifications />
+          <Contact />
+        </main>
+        <Footer />
       </div>
-      <About />
-      <Experience />
-      <Tech />
-      <Works />
-      <Education />
-      <Certifications />
-      <div className='relative z-0'>
-        <Contact />
-        <StarsCanvas />
-      </div>
-      <Footer />
-    </div>
+    </MotionConfig>
   );
 };
 
