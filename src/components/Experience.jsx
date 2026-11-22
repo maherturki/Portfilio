@@ -23,12 +23,11 @@ const ExperienceCard = ({ experience }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
-          />
+        <div
+          aria-hidden='true'
+          className='flex justify-center items-center w-full h-full text-white font-bold'
+        >
+          {experience.company_initials}
         </div>
       }
     >
@@ -41,6 +40,10 @@ const ExperienceCard = ({ experience }) => {
           {experience.company_name}
         </p>
       </div>
+
+      <p className='mt-4 text-white-100 text-[14px] leading-6'>
+        {experience.summary}
+      </p>
 
       <ul className='mt-5 list-disc ml-5 space-y-2'>
         {experience.points.map((point, index) => (
@@ -61,10 +64,10 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
-          What I have done so far
+        Professional background
         </p>
         <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
+        Experience.
         </h2>
       </motion.div>
 
@@ -82,4 +85,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(Experience, "experience");

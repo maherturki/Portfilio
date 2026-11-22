@@ -1,432 +1,317 @@
 import {
-  mobile,
   backend,
+  certArtificialIntelligence,
+  certCloudComputing,
+  certMachineLearningAssociate,
+  certMachineLearningSpecialization,
+  certOracleAiFoundations,
   creator,
-  web,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  mongodb,
-  git,
-  figma,
-  docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
+  github,
   linkedin,
-  ml,
-  mlk,
-  mlm,
-  certifcloud,
-  oracle,
-  jobit,
-  tripguide,
-  threejs,
+  mobile,
+  web,
 } from "../assets";
 
 export const navLinks = [
+  { id: "about", title: "About" },
+  { id: "experience", title: "Experience" },
+  { id: "skills", title: "Skills" },
+  { id: "projects", title: "Projects" },
+  { id: "education", title: "Education" },
+  { id: "certifications", title: "Certifications" },
+  { id: "contact", title: "Contact" },
+];
+
+export const socialLinks = [
   {
-    id: "about",
-    title: "About",
+    name: "GitHub",
+    url: "https://github.com/maherturki",
+    icon: github,
   },
   {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
-  {
-    id: "resume",
-    title: "Resume",
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/maher-turki/",
+    icon: linkedin,
   },
 ];
 
-const services = [
+export const services = [
+  { title: "Enterprise AI Applications", icon: web },
+  { title: "Agentic Workflows", icon: creator },
+  { title: "Python Backends & APIs", icon: backend },
+  { title: "Azure AI Solutions", icon: mobile },
+];
+
+export const languages = [
+  { name: "Arabic", level: "Native" },
+  { name: "French", level: "Fluent" },
+  { name: "English", level: "Fluent" },
+];
+
+export const skillGroups = [
   {
-    title: "AI Developer",
-    icon: web,
+    name: "Programming",
+    skills: ["Python", "C#", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "ML Engineer",
-    icon: mobile,
+    name: "AI & Generative AI",
+    skills: [
+      "LLM Applications",
+      "Generative AI",
+      "Agentic AI",
+      "RAG",
+      "Prompt Engineering",
+      "LangChain",
+      "LangGraph",
+      "Embeddings",
+      "Semantic Search",
+      "GPT-4",
+      "Mistral",
+    ],
   },
   {
-    title: "Web Developer",
-    icon: backend,
+    name: "Backend & Frontend",
+    skills: ["FastAPI", "REST APIs", "React.js", "Next.js", "Node.js"],
   },
   {
-    title: "Cloud Developer",
-    icon: creator,
+    name: "Cloud & Infrastructure",
+    skills: [
+      "Microsoft Azure",
+      "Azure AI Foundry",
+      "Azure Blob Storage",
+      "Azure Event Grid",
+      "Azure Storage Queues",
+      "Azure Logic Apps",
+      "Azure Key Vault",
+      "Azure App Service",
+      "Docker",
+    ],
+  },
+  {
+    name: "Databases & Tools",
+    skills: ["PostgreSQL", "SQL Server", "Git", "GitHub", "GitHub Actions"],
   },
 ];
 
-const technologies = [
+export const experiences = [
   {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-];
-
-const experiences = [
-  {
-    title: "MLOps Engineer Intern",
-    company_name: "AI Code Search Engine",
-    icon: meta,
-    iconBg: "#4CAF50",
-    date: "February  2025 – July 2025",
+    title: "AI Engineer",
+    company_name: "MoonSide Consulting & Services",
+    company_initials: "MS",
+    iconBg: "#915EFF",
+    date: "July 2025 – Present",
+    summary:
+      "Working on enterprise AI applications and software modernization projects in a financial-services environment.",
     points: [
-      "Developed and optimized an AI-powered code search engine using Azure AI services, Docker, .NET, and Python.",
-      "Built a multi-agent system for method search, usage detection, and file path generation.",
-      "Integrated an LLM-powered chatbot and Visual Studio plugin for real-time code search and generation.",
-      "Applied MLOps best practices for model deployment, monitoring, and performance optimization.",
-      "Collaborated with cross-functional teams to ensure seamless integration of AI-driven components."
+      "Develop AI-powered applications using Python, FastAPI, and modern LLM technologies.",
+      "Implement intelligent document-processing and automation workflows.",
+      "Work with LangChain and LangGraph to build and orchestrate agentic AI workflows.",
+      "Integrate AI services and cloud infrastructure using Microsoft Azure.",
+      "Develop backend services and REST APIs for enterprise applications.",
+      "Contribute to frontend development using React.js and Next.js when required.",
     ],
   },
   {
-    title: "AI Developer Intern",
-    company_name: "OwlCom",
-    icon: starbucks,
-    iconBg: "#383E56",
-    date: "July 2024 – August 2024",
+    title: "AI Engineer Intern",
+    company_name: "MoonSide Consulting & Services",
+    company_initials: "MS",
+    iconBg: "#915EFF",
+    date: "February 2025 – June 2025",
+    summary:
+      "Worked on an AI-powered code assistant project, exploring LLM applications and intelligent code analysis.",
     points: [
-      "Designed and implemented an AI-powered recruitment platform featuring resume analysis and candidate matching.",
-      "Developed modular solutions using Python, Streamlit, and LangChain with integrated MySQL database management.",
-      "Leveraged LLMs for intelligent candidate profiling and GitHub API for skill analysis.",
-      "Delivered a scalable system enabling efficient hiring processes.",
-    ],
-  },
-  {
-    title: "AI & Web Development Intern",
-    company_name: "HorizonLux",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "July 2023 - August 2023",
-    points: [
-      "Developed an AI-powered e-learning platform, AIcademy, integrating interactive learning modules.",
-      "Utilized React.js and Django for the front-end and back-end development.",
-      "Deployed machine learning algorithms for personalized learning experiences using TensorFlow and Keras.",
-      "Ensured smooth deployment on AWS with a focus on scalability and user experience.",
-    ],
-  },
-  {
-    title: "Software Developer Intern",
-    company_name: "BIS",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "February 2022 - June 2022",
-    points: [
-      "Developed an end-to-end system for real-time animal health monitoring using Python and Django.",
-      "Integrated React front-end and Dockerized back-end services for robust performance.",
-      "Designed efficient database models with MySQL for farm management optimization.",
-      "Conducted extensive testing and validation to ensure platform accuracy and reliability.",
-    ],
-  },
-  {
-    title: "Web Developer Intern",
-    company_name: "Owlcom",
-    icon: starbucks,
-    iconBg: "#E6DEDD",
-    date: "June 2021 - August 2021",
-    points: [
-      "Developed an e-commerce website using Django, HTML5, CSS3, and JavaScript.",
-      "Implemented a user-friendly interface with a focus on accessibility and responsiveness.",
-      "Optimized server-side performance for faster loading times.",
-      "Collaborated with cross-functional teams to align the project with business goals.",
+      "Developed AI-powered capabilities for code analysis and assistance.",
+      "Worked with Python and LLM-based application development.",
+      "Explored retrieval and intelligent search approaches for technical information.",
     ],
   },
 ];
 
-const testimonials = [
+export const education = [
   {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    degree: "Engineering Degree in Computer Science — Software Engineering",
+    institution: "ISAMM",
+    date: "September 2025",
   },
   {
-    testimonial:
-      "I've never met a wb developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    degree: "National Bachelor's Degree in Computer Science — Information Technology",
+    institution: "ISET Kelibia",
+    date: "June 2022",
   },
 ];
 
-const certifications = [
-  
+export const certifications = [
   {
-    name: "Machine Learning Specialization",
-    description: "Skills: Supervised, Advanced, and Unsupervised Learning, Reinforcement Learning",
-    organization: "DeepLearning.AI",
+    name: "IBM Artificial Intelligence Fundamentals",
+    organization: "IBM",
+    date: "Sep 2024",
+    image: certArtificialIntelligence,
+    certificate_link:
+      "https://www.credly.com/badges/ff3f08fb-fd1e-48b2-bdb0-b61bb3bf2ab9/linked_in_profile",
+  },
+  {
+    name: "IBM Cloud Computing Fundamentals",
+    organization: "IBM",
+    date: "Sep 2024",
+    image: certCloudComputing,
+    certificate_link:
+      "https://www.credly.com/badges/a2c22954-bcc6-488a-9945-10d0feffae81/linked_in_profile",
+  },
+  {
+    name: "IBM Machine Learning Specialist — Associate",
+    organization: "IBM",
     date: "Aug 2024",
-    tags: [
-      {
-        name: "Supervised Learning",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Reinforcement Learning",
-        color: "green-text-gradient",
-      },
-      {
-        name: "AI",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: mlm,
-    certificate_link: "https://www.coursera.org/account/accomplishments/specialization/6DD60XH14WOT", // Replace with actual certificate link
+    image: certMachineLearningAssociate,
+    certificate_link:
+      "https://www.credly.com/badges/9244edd5-15d5-4fb9-b8db-305ff4ed6381/linked_in_profile",
   },
   {
     name: "Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate",
-    description: "Skills: AI, Generative AI, LLMs, ETL, Data Visualization, Data Analysis",
     organization: "Oracle",
     date: "Jul 2024",
-    tags: [
-      {
-        name: "Generative AI",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Data Visualization",
-        color: "green-text-gradient",
-      },
-      {
-        name: "ETL",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: oracle, // Replace with actual image path
-    certificate_link: "https://brm-certview.oracle.com/ords/certview/ecertificate?ssn=OC5207776&trackId=OCI24AICFA&key=dc50458db50d7f493a5ab401729463c1bb2bee14", // Replace with actual certificate link
+    image: certOracleAiFoundations,
+    note:
+      "The certificate image lists validity through 24 August 2026; please confirm its current status.",
+    certificate_link:
+      "https://brm-certview.oracle.com/ords/certview/ecertificate?ssn=OC5207776&trackId=OCI24AICFA&key=dc50458db50d7f493a5ab401729463c1bb2bee14",
   },
   {
-    name: "Preparing Your Career in Generative AI",
-    description: "This certification highlights my understanding of key concepts in Generative AI, Artificial Intelligence, and Computer Ethics.",
-    organization: "LinkedIn Learning in collaboration with Microsoft",
-    date: "Issued Jan 2025",
-    tags: [
-      {
-        name: "Artificial Intelligence",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Generative AI",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Microsoft",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "LinkedIn Learning",
-        color: "purple-text-gradient",
-      },
-    ],
-    image: linkedin, // Replace with actual image path
-    certificate_link: "https://www.linkedin.com/learning/certificates/069570fec55a23882760e2e2980a73955e4d4e4330e4c76727d4c4cc4a91005e", // Replace with actual certificate link
-  },
-  {
-    name: "Artificial Intelligence Fundamentals",
-    description: "Skills: Computer Vision, NLP, Deep Learning, Multimodal AI, RAG",
-    organization: "IBM",
-    date: "Sep 2024",
-    tags: [
-      {
-        name: "AI",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Computer Vision",
-        color: "green-text-gradient",
-      },
-      {
-        name: "NLP",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: ml, // Replace with actual image path
-    certificate_link: "https://www.credly.com/badges/ff3f08fb-fd1e-48b2-bdb0-b61bb3bf2ab9/linked_in_profile", // Replace with actual certificate link
-  },
-  {
-    name: "IBM Machine Learning Specialist - Associate",
-    description: "Skills: Models, Evaluation, Deployment, Machine Learning",
-    organization: "IBM",
+    name: "Machine Learning Specialization",
+    organization: "DeepLearning.AI",
     date: "Aug 2024",
-    tags: [
-      {
-        name: "Machine Learning",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "ML Models",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Evaluation",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: mlk, // Replace with actual image path
-    certificate_link: "https://www.credly.com/badges/9244edd5-15d5-4fb9-b8db-305ff4ed6381/linked_in_profile", // Replace with actual certificate link
+    image: certMachineLearningSpecialization,
+    certificate_link:
+      "https://www.coursera.org/account/accomplishments/specialization/6DD60XH14WOT",
   },
   {
-    name: "Cloud Computing Fundamentals",
-    description: "Skills: Cloud Computing, Migration, Infrastructure, IaaS, PaaS, SaaS",
-    organization: "IBM",
-    date: "Sep 2024",
-    tags: [
-      {
-        name: "Cloud Computing",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "IaaS",
-        color: "green-text-gradient",
-      },
-      {
-        name: "SaaS",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: certifcloud, // Replace with actual image path
-    certificate_link: "https://www.credly.com/badges/a2c22954-bcc6-488a-9945-10d0feffae81/linked_in_profile", // Replace with actual certificate link
+    name: "Advanced Learning Algorithms",
+    organization: "DeepLearning.AI",
+  },
+  {
+    name: "Supervised Machine Learning: Regression and Classification",
+    organization: "DeepLearning.AI",
+  },
+  {
+    name: "Introduction to Python",
+    organization: "DataCamp",
   },
 ];
 
-
-
-
-const projects = [
+export const projects = [
   {
-    name: "EcoAct",
+    name: "Intelligent Invoice Automation",
+    category: "Document Automation",
+    status: "In development",
     description:
-      "Web-based platform that connects ecological actors in Tunisia, providing personalized recommendations and trash detection functionalities to promote sustainability and environmental awareness.",
-    tags: [
+      "An enterprise invoice-processing platform designed to automate invoice ingestion, extraction, validation, and processing.",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "React.js",
+      "LangChain",
+      "LangGraph",
+      "Azure AI Foundry",
+      "Mistral Large 3",
+      "Azure Blob Storage",
+      "Azure Event Grid",
+      "Azure Storage Queues",
+      "PostgreSQL",
+    ],
+    details: [
       {
-        name: "django",
-        color: "blue-text-gradient",
+        heading: "Architecture",
+        items: [
+          "Processes PDF and XML invoices; XML documents are parsed directly and PDF content extraction is handled by the backend.",
+          "Mistral AI extraction is optional.",
+          "Background processing is separated from the main API.",
+          "Azure Blob Storage stores invoice documents; Azure Event Grid and Storage Queues support asynchronous processing.",
+          "PostgreSQL stores structured invoice information.",
+        ],
       },
       {
-        name: "react",
-        color: "green-text-gradient",
-      },
-      {
-        name: "AI",
-        color: "pink-text-gradient",
+        heading: "My contributions",
+        items: [
+          "Implemented LangGraph-based orchestration and workflow logic.",
+          "Developed the FastAPI background worker.",
+          "Integrated Azure Storage Queues for asynchronous processing.",
+          "Implemented selected frontend pages and components using Next.js and React.js.",
+          "Contributed to backend development and invoice-processing workflows.",
+        ],
       },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/maherturki",
   },
   {
-    name: "Therapy Bot",
+    name: "MorgenFund: Enterprise AI Assistants",
+    category: "Enterprise AI Assistants",
     description:
-      "AI-powered chatbot designed for therapy sessions, utilizing natural language processing and computer vision to provide emotional support and mental health assistance.",
-    tags: [
+      "An enterprise AI assistant solution enabling natural-language interaction with confidential source code and technical documentation.",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "RAG",
+      "Embeddings",
+      "Semantic Search",
+      "GPT-4",
+      "Azure AI",
+    ],
+    details: [
       {
-        name: "python",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "nlp",
-        color: "green-text-gradient",
-      },
-      {
-        name: "opencv",
-        color: "pink-text-gradient",
+        heading: "Focus",
+        items: [
+          "Intelligent retrieval and contextual understanding of enterprise technical information.",
+          "AI-powered natural-language interaction with confidential source code and technical documentation.",
+        ],
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/maherturki",
   },
   {
-    name: "3D AI Teacher",
+    name: "E-Fax Automation",
+    category: "Enterprise Automation",
+    status: "Delivered to production",
     description:
-      "AI-powered virtual teacher in a 3D environment using React Three Fiber and Three.js for visuals, Azure Speech SDK for speech recognition, and Azure OpenAI for dynamic interactions.",
-    tags: [
+      "An enterprise email-to-fax automation solution independently delivered to production.",
+    technologies: [
+      "Azure Logic Apps",
+      "Microsoft Graph API",
+      "Sipgate Fax API",
+      "Azure Key Vault",
+      "Managed Identity",
+    ],
+    details: [
       {
-        name: "React",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "AzureSpeechSDK",
-        color: "green-text-gradient",
-      },
-      {
-        name: "AzureOpenAI",
-        color: "pink-text-gradient",
+        heading: "My contributions",
+        items: [
+          "Automated email processing and fax submission.",
+          "Integrated Microsoft Graph API and Sipgate Fax API.",
+          "Implemented recipient validation and message handling.",
+          "Implemented fax delivery-status polling.",
+          "Managed successful and failed delivery workflows.",
+          "Used Azure Managed Identity and Key Vault for secure integration.",
+        ],
       },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/maherturki",
+  },
+  {
+    name: "Intelligent Contract Analysis Assistant",
+    category: "AI & Document Analysis",
+    description:
+      "An AI-powered contract analysis assistant developed during my internship to extract relevant contract information, analyze documents, and generate structured summaries.",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "GPT-4",
+      "Azure AI Document Intelligence",
+      "Prompt Engineering",
+    ],
+    details: [
+      {
+        heading: "Focus",
+        items: [
+          "Extracts relevant information from contracts.",
+          "Analyzes contract documents and generates structured summaries.",
+        ],
+      },
+    ],
   },
 ];
-
-export { services, technologies, experiences, testimonials, projects, certifications };

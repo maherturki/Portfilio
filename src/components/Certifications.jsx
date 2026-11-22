@@ -12,13 +12,15 @@ const CertificationCard = ({ certification, index }) => {
       variants={fadeIn("up", "spring", index * 0.3, 0.75)}
       className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
     >
-      <div className="relative w-full h-[230px]">
-        <img
-          src={certification.image}
-          alt={certification.name}
-          className="w-full h-full object-cover rounded-2xl"
-        />
-      </div>
+      {certification.image && (
+        <div className="relative w-full h-[230px]">
+          <img
+            src={certification.image}
+            alt={`${certification.name} credential`}
+            className="w-full h-full object-cover rounded-2xl"
+          />
+        </div>
+      )}
       <div className="mt-5">
         <h3 className="text-white font-bold text-[24px]">
           {certification.name}
@@ -26,29 +28,27 @@ const CertificationCard = ({ certification, index }) => {
         <p className="mt-2 text-secondary text-[16px]">
           {certification.organization}
         </p>
-        <p className="mt-2 text-secondary text-[14px]">{certification.date}</p>
-        <p className="mt-3 text-white text-[14px]">{certification.description}</p>
-      </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {certification.tags.map((tag) => (
-          <p
-            key={tag.name}
-            className={`text-[14px] ${tag.color}`}
-          >
-            #{tag.name}
+        {certification.date && (
+          <p className="mt-2 text-secondary text-[14px]">
+            {certification.date}
           </p>
-        ))}
+        )}
+        {certification.note && (
+          <p className="mt-3 text-secondary text-[13px] leading-5">
+            {certification.note}
+          </p>
+        )}
       </div>
-      <div className="mt-4">
+      {certification.certificate_link && (
         <a
           href={certification.certificate_link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 text-[14px] hover:underline"
+          className="mt-4 inline-block text-blue-400 text-[14px] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#915EFF]"
         >
-          View Certification
+          View credential
         </a>
-      </div>
+      )}
     </motion.div>
   );
 };

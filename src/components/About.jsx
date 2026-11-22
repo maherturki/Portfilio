@@ -3,7 +3,7 @@ import { Tilt } from 'react-tilt';
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { services } from "../constants";
+import { languages, services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
@@ -23,7 +23,7 @@ const ServiceCard = ({ index, title, icon }) => (
       >
         <img
           src={icon}
-          alt='web-development'
+          alt={title}
           className='w-16 h-16 object-contain'
         />
 
@@ -39,21 +39,37 @@ const About = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
+        <p className={styles.sectionSubText}>About</p>
+        <h2 className={styles.sectionHeadText}>About Me.</h2>
       </motion.div>
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I'm a passionate software engineering student with a strong focus on AI and experience in Python, Java, JavaScript, and frameworks like React.js, Node.js, Django, and Three.js. With hands-on expertise in AI, machine learning, and full-stack development, I specialize in building scalable, user-friendly solutions. A quick learner and team player, I thrive on collaborating to turn innovative AI-driven ideas into impactful solutions!
+        I'm an AI Engineer building enterprise applications with Generative AI, LLM integrations, agentic workflows, and Retrieval-Augmented Generation. I develop Python backends and REST APIs, and integrate cloud-based AI solutions using Microsoft Azure. My work includes financial-services-related enterprise solutions, intelligent document processing, and automation.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
+      </div>
+
+      <div className='mt-14'>
+        <h3 className='text-white font-bold text-[24px]'>Languages</h3>
+        <ul className='mt-5 flex flex-wrap gap-3'>
+          {languages.map((language) => (
+            <li
+              key={language.name}
+              className='rounded-full bg-tertiary px-4 py-2 text-secondary'
+            >
+              <span className='text-white'>{language.name}</span>
+              <span aria-hidden='true'> — </span>
+              {language.level}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
