@@ -9,6 +9,27 @@
       content="Maher Turki is an AI Engineer focused on Generative AI, Agentic AI, LLM applications, Python backend engineering, and intelligent enterprise systems."
     />
     <meta name="theme-color" content="#08090d" />
+    <script>
+      (() => {
+        const storageKey = "maher-portfolio-theme";
+        let theme = "dark";
+
+        try {
+          const savedTheme = localStorage.getItem(storageKey);
+          if (savedTheme === "light" || savedTheme === "dark") {
+            theme = savedTheme;
+          }
+        } catch (error) {
+          console.warn("Theme preference could not be loaded:", error);
+        }
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "light" ? "#f7f6fb" : "#08090d");
+      })();
+    </script>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
