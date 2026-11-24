@@ -1,9 +1,10 @@
+
 const visuals = {
   invoice: {
     className: "",
-    label: "Invoice processing flow",
+    label: "AI-powered invoice processing flow",
     description:
-      "Email, Logic Apps, Blob Storage, Event Grid, Storage Queue, FastAPI worker, extraction and validation, PostgreSQL.",
+      "Email, Logic Apps, Blob Storage, Event Grid, Storage Queue, FastAPI worker, AI agent orchestration and package preparation, Mistral Large 3 extraction, validation and PostgreSQL.",
     nodes: [
       "Email",
       "Logic Apps",
@@ -11,11 +12,14 @@ const visuals = {
       "Event Grid",
       "Storage Queue",
       "FastAPI worker",
+      "AI agent orchestration",
+      "Prepare processing package",
       "Extract + validate",
       "PostgreSQL",
     ],
     applicationLayer: ["Next.js frontend", "FastAPI API"],
-    caption: "Separate API and worker · direct XML parsing · optional Mistral extraction",
+    caption:
+      "Separate API and worker · LangGraph orchestration and package preparation · direct XML parsing · Mistral Large 3 PDF extraction via Azure AI Foundry",
   },
   retrieval: {
     className: "project-visual--retrieval",

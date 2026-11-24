@@ -199,7 +199,7 @@ export const projects = [
     category: "Document Automation",
     status: "In development",
     description:
-      "An enterprise invoice-processing platform designed to automate invoice ingestion, extraction, validation, and processing.",
+      "An enterprise invoice-processing platform designed to automate invoice ingestion, AI-agent orchestration, extraction, validation, and processing.",
     technologies: [
       "Python",
       "FastAPI",
@@ -221,15 +221,15 @@ export const projects = [
           "Azure Logic Apps ingests invoice emails.",
           "Azure Blob Storage stores invoice documents; Event Grid and Storage Queues coordinate asynchronous processing.",
           "A separate FastAPI background worker processes invoices while the API serves the application.",
-          "Processes PDF and XML invoices; XML documents are parsed directly and PDF content extraction is handled by the backend.",
-          "Mistral AI extraction is optional.",
+          "A LangGraph-based AI agent orchestrates the processing workflow, organizes the invoice data, and prepares the processing package for subsequent steps.",
+          "XML invoices are parsed directly by the backend, while PDF invoices undergo content extraction and AI-powered structured data extraction using Mistral Large 3 through Azure AI Foundry.",
           "PostgreSQL stores structured invoice information.",
         ],
       },
       {
         heading: "My contributions",
         items: [
-          "Implemented LangGraph-based orchestration and workflow logic.",
+          "Implemented LangGraph-based AI-agent orchestration and workflow logic.",
           "Developed the FastAPI background worker.",
           "Integrated Azure Storage Queues for asynchronous processing.",
           "Implemented selected frontend pages and components using Next.js and React.js.",

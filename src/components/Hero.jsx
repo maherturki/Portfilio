@@ -4,7 +4,7 @@ import { socialLinks } from "../constants";
 import HeroVisual from "./HeroVisual";
 
 const Hero = () => (
-  <section id='home' className='hero-section'>
+  <section id='home' className='hero-section' aria-labelledby='home-heading'>
     <div className='page-container hero-grid'>
       <motion.div
         className='hero-copy'
@@ -13,7 +13,7 @@ const Hero = () => (
         transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
       >
         <p className='hero-kicker'>AI Engineer · Generative AI · Agentic Systems</p>
-        <h1 className='hero-title'>
+        <h1 className='hero-title' id='home-heading'>
           Building intelligent systems that solve{" "}
           <span className='hero-title-accent'>real-world problems.</span>
         </h1>
