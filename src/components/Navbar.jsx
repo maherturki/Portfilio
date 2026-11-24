@@ -11,33 +11,69 @@ const Navbar = ({ theme, onThemeToggle }) => {
   const mobileNavRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
     const sections = navLinks
       .map(({ id }) => document.getElementById(id))
       .filter(Boolean);
+    let animationFrame = null;
 
-    if (!("IntersectionObserver" in window)) return undefined;
+    const updateNavigation = () => {
+      animationFrame = null;
+      setIsScrolled(window.scrollY > 24);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const current = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      const activationPoint =
+        window.scrollY + Math.min(window.innerHeight * 0.25, 260);
+      let currentSection = "";
 
-        if (current) setActiveSection(current.target.id);
-      },
-      { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.1, 0.3, 0.6] }
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        if (sectionTop <= activationPoint) currentSection = section.id;
+      });
+
+      const isAtPageBottom =
+        Math.ceil(window.scrollY + window.innerHeight) >=
+        document.documentElement.scrollHeight - 2;
+      if (isAtPageBottom && sections.length) {
+        currentSection = sections[sections.length - 1].id;
+      }
+
+      setActiveSection(currentSection);
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame === null) {
+        animationFrame = window.requestAnimationFrame(updateNavigation);
+      }
+    };
+
+    const handleHashChange = () => {
+      const sectionId = window.location.hash.slice(1);
+      setActiveSection(
+        sections.some((section) => section.id === sectionId) ? sectionId : ""
+      );
+    };
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("hashchange", handleHashChange);
+
+    const initialSectionId = window.location.hash.slice(1);
+    const initialSection = sections.find(
+      (section) => section.id === initialSectionId
     );
+    if (initialSection) {
+      setActiveSection(initialSectionId);
+      initialSection.scrollIntoView({ block: "start" });
+    }
+    scheduleUpdate();
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("hashchange", handleHashChange);
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -76,8 +112,12 @@ const Navbar = ({ theme, onThemeToggle }) => {
   }, [isMenuOpen]);
 
   const closeMenu = () => setIsMenuOpen(false);
+  const handleNavClick = (event) => {
+    setActiveSection(event.currentTarget.hash.slice(1));
+  };
   const handleMobileNavClick = (event) => {
     const sectionId = event.currentTarget.hash.slice(1);
+    setActiveSection(sectionId);
     closeMenu();
     window.requestAnimationFrame(() => {
       document.getElementById(sectionId)?.focus({ preventScroll: true });
@@ -114,6 +154,7 @@ const Navbar = ({ theme, onThemeToggle }) => {
               className={`nav-link${activeSection === id ? " nav-link--active" : ""}`}
               href={`#${id}`}
               aria-current={activeSection === id ? "location" : undefined}
+              onClick={handleNavClick}
             >
               {title}
             </a>
