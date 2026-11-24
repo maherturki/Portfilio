@@ -44,7 +44,7 @@ const App = () => {
           Skip to content
         </a>
         <Navbar theme={theme} onThemeToggle={toggleTheme} />
-        <main id='main-content'>
+        <main id='main-content' tabIndex={-1}>
           <Hero />
           <About />
           <Tech />

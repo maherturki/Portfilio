@@ -139,8 +139,6 @@ export const certifications = [
     organization: "Oracle",
     date: "Jul 2024",
     image: certOracleAiFoundations,
-    note:
-      "The certificate image lists validity through 24 August 2026; please confirm its current status.",
     certificate_link:
       "https://brm-certview.oracle.com/ords/certview/ecertificate?ssn=OC5207776&trackId=OCI24AICFA&key=dc50458db50d7f493a5ab401729463c1bb2bee14",
   },

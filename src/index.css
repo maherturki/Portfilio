@@ -222,7 +222,7 @@ summary:focus-visible {
 }
 
 ::selection {
-  color: var(--text-on-primary-button);
+  color: var(--text-primary);
   background: var(--accent-selection);
 }
 
