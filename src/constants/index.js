@@ -95,6 +95,7 @@ export const experiences = [
       "Contribute to frontend development using React.js and Next.js when required.",
     ],
   },
+  
   {
     title: "AI Engineer Intern",
     company_name: "Moonside Consulting & Services",
@@ -103,11 +104,11 @@ export const experiences = [
     iconBg: "#915EFF",
     date: "February 2025 – June 2025",
     summary:
-      "Worked on an AI-powered code assistant project, exploring LLM applications and intelligent code analysis.",
+      "Developed an AI-powered contract analysis assistant during my internship, while also contributing to LLM-based code analysis and intelligent retrieval applications.",
     points: [
-      "Developed AI-powered capabilities for code analysis and assistance.",
-      "Worked with Python and LLM-based application development.",
-      "Explored retrieval and intelligent search approaches for technical information.",
+      "Developed an Intelligent Contract Analysis Assistant using Python, FastAPI, GPT-4, and Azure AI Document Intelligence.",
+      "Implemented contract information extraction, document analysis, and structured summary generation using prompt engineering.",
+      "Contributed to an AI-powered code assistant focused on intelligent code analysis and retrieval of technical information.",
     ],
   },
 ];
